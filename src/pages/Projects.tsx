@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
-import { projector } from 'lucide-react';
+import { Projector } from 'lucide-react';
 
 interface ProjectCardProps {
   id: string;
@@ -138,7 +138,7 @@ const Projects = () => {
           <div className="bg-green-50 rounded-lg p-8 md:p-12 text-center">
             <div className="mb-6 flex justify-center">
               <div className="bg-green-500 text-white rounded-full p-3">
-                <projector className="w-8 h-8" />
+                <Projector className="w-8 h-8" />
               </div>
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-green-700">Have a Project Idea?</h2>

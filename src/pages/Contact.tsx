@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import MainLayout from '@/components/layout/MainLayout';
-import { map } from 'lucide-react';
+import { Map } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -163,7 +163,7 @@ const Contact = () => {
                   <h2 className="text-2xl font-semibold mb-6 text-green-600">Visit Us</h2>
                   <div className="aspect-ratio border border-gray-300 rounded-md bg-gray-100 flex items-center justify-center h-64">
                     <div className="flex flex-col items-center text-gray-500">
-                      <map className="w-12 h-12 mb-2" />
+                      <Map className="w-12 h-12 mb-2" />
                       <p>Map placeholder - Interactive map would be here</p>
                     </div>
                   </div>
