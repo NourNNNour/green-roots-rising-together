@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Volunteer, Heart } from 'lucide-react';
+import { UserPlus, Heart } from 'lucide-react';
 
 const HowToHelp = () => {
   return (
@@ -19,7 +19,7 @@ const HowToHelp = () => {
           <div className="bg-green-500/10 rounded-lg p-8">
             <div className="mb-6 flex justify-center">
               <div className="bg-green-500 text-white rounded-full p-3">
-                <Volunteer size={32} />
+                <UserPlus size={32} />
               </div>
             </div>
             <h3 className="text-2xl font-bold text-center mb-4">Become a Volunteer</h3>
