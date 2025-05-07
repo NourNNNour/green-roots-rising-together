@@ -1,8 +1,11 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="relative h-[80vh] min-h-[600px] flex items-center overflow-hidden">
       {/* Background image */}
@@ -18,17 +21,17 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10 text-white">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            Cultivating Change: Growing a Greener Future Together
+            {t('hero.title')}
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-green-50">
-            Join our mission to restore local ecosystems through community-driven tree planting and environmental conservation projects.
+            {t('hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <Link to="/volunteer">
-              <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white">Volunteer Now</Button>
+              <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white">{t('hero.volunteer')}</Button>
             </Link>
             <Link to="/donate">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20">Donate</Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20">{t('hero.donate')}</Button>
             </Link>
           </div>
         </div>

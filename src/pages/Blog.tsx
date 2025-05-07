@@ -5,13 +5,17 @@ import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import MainLayout from '@/components/layout/MainLayout';
 import BlogList from '@/components/blog/BlogList';
-
-// Filter categories (these would come from the backend in a real app)
-const categories = ['All', 'Education', 'Volunteer Stories', 'Research', 'Guides', 'Climate Action'];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Blog = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
+  const { t, language } = useLanguage();
+
+  // Filter categories (these would come from the backend in a real app)
+  const categories = language === 'ar' 
+    ? ['الكل', 'التعليم', 'قصص المتطوعين', 'البحث', 'أدلة', 'العمل المناخي']
+    : ['All', 'Education', 'Volunteer Stories', 'Research', 'Guides', 'Climate Action'];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,9 +27,13 @@ const Blog = () => {
       {/* Hero section */}
       <div className="bg-green-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">Our Blog</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+            {language === 'ar' ? 'مدونتنا' : 'Our Blog'}
+          </h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Stories, updates, and insights from our environmental conservation journey.
+            {language === 'ar' 
+              ? 'القصص والتحديثات والرؤى من رحلة الحفاظ على البيئة.'
+              : 'Stories, updates, and insights from our environmental conservation journey.'}
           </p>
         </div>
       </div>
@@ -36,7 +44,7 @@ const Blog = () => {
           <form onSubmit={handleSearch} className="flex max-w-lg mx-auto">
             <Input
               type="text"
-              placeholder="Search articles..."
+              placeholder={language === 'ar' ? 'بحث في المقالات...' : 'Search articles...'}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="rounded-r-none"

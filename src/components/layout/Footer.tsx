@@ -1,8 +1,11 @@
 
 import { Link } from 'react-router-dom';
 import { Leaf, Heart, Twitter, Facebook } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   return (
     <footer className="bg-green-600 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -14,7 +17,7 @@ const Footer = () => {
               <span className="font-montserrat font-bold text-xl">GreenRoots</span>
             </div>
             <p className="text-green-50 mb-4">
-              Cultivating change and growing a greener future together through community-driven environmental projects.
+              {t('footer.mission')}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-white hover:text-cream-300 transition-colors">
@@ -28,35 +31,35 @@ const Footer = () => {
 
           {/* Quick links */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-lg mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-green-50 hover:text-white transition-colors">Home</Link>
+                <Link to="/" className="text-green-50 hover:text-white transition-colors">{t('nav.home')}</Link>
               </li>
               <li>
-                <Link to="/about" className="text-green-50 hover:text-white transition-colors">About Us</Link>
+                <Link to="/about" className="text-green-50 hover:text-white transition-colors">{t('nav.about')}</Link>
               </li>
               <li>
-                <Link to="/projects" className="text-green-50 hover:text-white transition-colors">Projects</Link>
+                <Link to="/projects" className="text-green-50 hover:text-white transition-colors">{t('nav.projects')}</Link>
               </li>
               <li>
-                <Link to="/blog" className="text-green-50 hover:text-white transition-colors">Blog</Link>
+                <Link to="/blog" className="text-green-50 hover:text-white transition-colors">{t('nav.blog')}</Link>
               </li>
               <li>
-                <Link to="/contact" className="text-green-50 hover:text-white transition-colors">Contact</Link>
+                <Link to="/contact" className="text-green-50 hover:text-white transition-colors">{t('nav.contact')}</Link>
               </li>
             </ul>
           </div>
 
           {/* Get involved */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Get Involved</h3>
+            <h3 className="font-semibold text-lg mb-4">{t('footer.getInvolved')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/volunteer" className="text-green-50 hover:text-white transition-colors">Volunteer</Link>
+                <Link to="/volunteer" className="text-green-50 hover:text-white transition-colors">{t('hero.volunteer')}</Link>
               </li>
               <li>
-                <Link to="/donate" className="text-green-50 hover:text-white transition-colors">Donate</Link>
+                <Link to="/donate" className="text-green-50 hover:text-white transition-colors">{t('hero.donate')}</Link>
               </li>
               <li>
                 <Link to="/events" className="text-green-50 hover:text-white transition-colors">Events</Link>
@@ -66,7 +69,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
+            <h3 className="font-semibold text-lg mb-4">{t('footer.contactUs')}</h3>
             <address className="not-italic text-green-50">
               <p>123 Green Street</p>
               <p>Earth City, Planet 12345</p>
@@ -77,9 +80,9 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-green-500 mt-8 pt-8 text-center md:flex md:justify-between md:text-left">
-          <p className="text-green-50">&copy; {new Date().getFullYear()} GreenRoots. All rights reserved.</p>
+          <p className="text-green-50">&copy; {new Date().getFullYear()} GreenRoots. {t('footer.rights')}</p>
           <p className="text-green-50 mt-2 md:mt-0">
-            Made with <Heart className="inline-block h-4 w-4 text-red-400" fill="currentColor" /> for our planet
+            {t('footer.made')} <Heart className="inline-block h-4 w-4 text-red-400" fill="currentColor" /> {t('footer.planet')}
           </p>
         </div>
       </div>
