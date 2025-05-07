@@ -1,75 +1,78 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 142 33% 95%;
-    --foreground: 150 40% 10%;
-
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 150 40% 10%;
-
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 150 40% 10%;
-
-    --primary: 152 40% 30%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 45 36% 70%;
-    --secondary-foreground: 150 40% 10%;
-
-    --muted: 152 10% 90%;
-    --muted-foreground: 150 20% 40%;
-
-    --accent: 30 32% 53%;
-    --accent-foreground: 0 0% 100%;
-
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 152 10% 80%;
-    --input: 152 10% 80%;
-    --ring: 152 40% 30%;
-
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 142 71% 45%;
     --radius: 0.5rem;
-  }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-opensans;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-montserrat font-semibold;
   }
 }
 
-/* Custom classes */
-@layer components {
-  .btn-primary {
-    @apply bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-md transition-colors;
+@layer base {
+  body {
+    @apply bg-background text-foreground;
   }
-  
-  .btn-secondary {
-    @apply bg-earth-500 hover:bg-earth-600 text-white font-medium py-2 px-6 rounded-md transition-colors;
-  }
-  
-  .hero-gradient {
-    @apply bg-gradient-to-b from-transparent to-green-500/30;
-  }
-  
-  .section-padding {
-    @apply py-16 px-4 md:py-24 md:px-8;
-  }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
-  }
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.card-hover {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hero-gradient {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+}
+
+/* RTL support */
+[dir="rtl"] .md\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .sm\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Apply RTL font styles */
+[dir="rtl"] body {
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Add Tajawal Arabic font */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+/* Fix dropdown menu alignment in RTL */
+[dir="rtl"] .dropdown-menu {
+  right: 0;
+  left: auto;
 }
