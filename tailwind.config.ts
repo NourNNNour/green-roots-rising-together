@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,48 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for environmental theme
+				green: {
+					50: '#ecf8f2',
+					100: '#d1f0e0',
+					200: '#a4e0c2',
+					300: '#76d1a3',
+					400: '#48c185',
+					500: '#2D6A4F', // primary green
+					600: '#1E4835',
+					700: '#173828',
+					800: '#10281c',
+					900: '#081410',
+				},
+				earth: {
+					50: '#f9f5f1',
+					100: '#f3e9e1',
+					200: '#e7d3c3',
+					300: '#dbbd9c',
+					400: '#cfa67e',
+					500: '#A98467', // primary earth
+					600: '#87644a',
+					700: '#654c38',
+					800: '#433225',
+					900: '#221913',
+				},
+				cream: {
+					50: '#fffcf7',
+					100: '#fef8ee',
+					200: '#fdf5de',
+					300: '#F0EAD2', // primary cream
+					400: '#e6d9b2',
+					500: '#d6c382',
+					600: '#c4aa58',
+					700: '#a78a3a',
+					800: '#765f2b',
+					900: '#3b3015',
+				},
+			},
+			fontFamily: {
+				montserrat: ['Montserrat', 'sans-serif'],
+				opensans: ['Open Sans', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
