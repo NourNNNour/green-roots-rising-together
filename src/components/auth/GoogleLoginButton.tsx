@@ -24,7 +24,7 @@ const GoogleLoginButton = ({ className = "" }: GoogleLoginButtonProps) => {
     <Button
       type="button"
       variant="outline"
-      className={`w-full ${className}`}
+      className={`w-full bg-transparent ${className}`}
       onClick={handleGoogleLogin}
     >
       <LogIn className="mr-2 h-4 w-4" />

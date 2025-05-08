@@ -21,16 +21,16 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <Leaf className="h-6 w-6 text-green-500" />
-            <span className="font-montserrat font-bold text-xl text-green-500">GreenRoots</span>
+            <span className="font-montserrat font-bold text-xl text-green-500">Alakhdar</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-foreground hover:text-green-500 transition-colors">{t('nav.home')}</Link>
-            <Link to="/about" className="text-foreground hover:text-green-500 transition-colors">{t('nav.about')}</Link>
-            <Link to="/projects" className="text-foreground hover:text-green-500 transition-colors">{t('nav.projects')}</Link>
-            <Link to="/blog" className="text-foreground hover:text-green-500 transition-colors">{t('nav.blog')}</Link>
-            <Link to="/contact" className="text-foreground hover:text-green-500 transition-colors">{t('nav.contact')}</Link>
+          <div className="hidden md:flex items-center md:space-x-8">
+            <Link to="/" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.home')}</Link>
+            <Link to="/about" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.about')}</Link>
+            <Link to="/projects" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.projects')}</Link>
+            <Link to="/blog" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.blog')}</Link>
+            <Link to="/contact" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.contact')}</Link>
           </div>
 
           {/* Action Buttons */}
@@ -69,7 +69,7 @@ const Navbar = () => {
                   <Button variant="outline" className="w-full border-green-500 text-green-500 hover:bg-green-50">{t('nav.login')}</Button>
                 </Link>
                 <Link to="/register" onClick={toggleMenu}>
-                  <Button className="w-full bg-green-500 hover:bg-green-600 text-white">{t('nav.join')}</Button>
+                  <Button variant="outline" className="w-full bg-green-500 hover:bg-green-600 text-white">{t('nav.join')}</Button>
                 </Link>
               </div>
             </div>

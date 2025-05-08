@@ -18,7 +18,7 @@ const CallToAction = () => {
             <Button size="lg" className="bg-white text-green-600 hover:bg-cream-300">{t('cta.signup')}</Button>
           </Link>
           <Link to="/contact">
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20">{t('cta.contact')}</Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-transparent bg-transparent">{t('cta.contact')}</Button>
           </Link>
         </div>
       </div>
