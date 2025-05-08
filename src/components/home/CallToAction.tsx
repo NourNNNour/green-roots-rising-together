@@ -14,7 +14,7 @@ const CallToAction = () => {
           {t('cta.description')}
         </p>
         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <Link to="/register">
+          <Link to="/volunteer">
             <Button size="lg" className="bg-white text-green-600 hover:bg-cream-300">{t('cta.signup')}</Button>
           </Link>
           <Link to="/contact">
