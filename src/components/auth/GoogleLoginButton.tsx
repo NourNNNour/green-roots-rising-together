@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Google } from "lucide-react";
+import { Mail } from "lucide-react";
 
 interface GoogleLoginButtonProps {
   className?: string;
@@ -27,7 +27,7 @@ const GoogleLoginButton = ({ className = "" }: GoogleLoginButtonProps) => {
       className={`w-full ${className}`}
       onClick={handleGoogleLogin}
     >
-      <Google className="mr-2 h-4 w-4" />
+      <Mail className="mr-2 h-4 w-4" />
       {t('auth.login')}
     </Button>
   );
