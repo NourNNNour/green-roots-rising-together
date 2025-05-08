@@ -2,8 +2,11 @@
 import MainLayout from '@/components/layout/MainLayout';
 import RegisterForm from '@/components/auth/RegisterForm';
 import { Leaf } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Register = () => {
+  const { t } = useLanguage();
+  
   return (
     <MainLayout>
       <div className="min-h-[80vh] py-12 px-4">
@@ -12,8 +15,8 @@ const Register = () => {
             <div className="flex justify-center">
               <Leaf className="h-12 w-12 text-green-500" />
             </div>
-            <h2 className="mt-6 text-3xl font-bold text-gray-900">Join GreenRoots</h2>
-            <p className="mt-2 text-gray-600">Create your account and be part of the change</p>
+            <h2 className="mt-6 text-3xl font-bold text-gray-900">{t('auth.createAccount')}</h2>
+            <p className="mt-2 text-gray-600">{t('project.name')}</p>
           </div>
           <RegisterForm />
         </div>

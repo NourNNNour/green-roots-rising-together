@@ -7,8 +7,11 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/components/ui/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useLanguage } from '@/contexts/LanguageContext';
+import GoogleLoginButton from './GoogleLoginButton';
 
 const RegisterForm = () => {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -49,7 +52,7 @@ const RegisterForm = () => {
     setTimeout(() => {
       toast({
         title: "Registration Successful",
-        description: "Welcome to the GreenRoots community!",
+        description: "Welcome to the " + t('project.name') + " community!",
       });
       setIsLoading(false);
       // In a real app, we would redirect or update auth state
@@ -70,12 +73,24 @@ const RegisterForm = () => {
     });
   };
 
+  const interests = language === 'ar' 
+    ? ['زراعة الأشجار', 'تنظيف', 'تعليم', 'جمع تبرعات']
+    : ['Tree Planting', 'Cleanup', 'Education', 'Fundraising'];
+
   return (
     <div className="w-full max-w-md mx-auto">
+      <div className="mb-6">
+        <GoogleLoginButton className="mb-4" />
+        <div className="relative flex items-center justify-center">
+          <div className="w-full border-t border-gray-300"></div>
+          <div className="relative px-4 bg-white text-sm text-gray-500">{t('auth.continue')}</div>
+        </div>
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Full Name */}
         <div className="space-y-2">
-          <Label htmlFor="fullName">Full Name</Label>
+          <Label htmlFor="fullName">{t('auth.fullName')}</Label>
           <Input
             id="fullName"
             name="fullName"
@@ -87,7 +102,7 @@ const RegisterForm = () => {
 
         {/* Email */}
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t('auth.emailAddress')}</Label>
           <Input
             id="email"
             name="email"
@@ -100,7 +115,7 @@ const RegisterForm = () => {
 
         {/* Password */}
         <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">{t('auth.password')}</Label>
           <Input
             id="password"
             name="password"
@@ -114,7 +129,7 @@ const RegisterForm = () => {
 
         {/* Confirm Password */}
         <div className="space-y-2">
-          <Label htmlFor="passwordConfirm">Confirm Password</Label>
+          <Label htmlFor="passwordConfirm">{t('auth.confirmPassword')}</Label>
           <Input
             id="passwordConfirm"
             name="passwordConfirm"
@@ -127,17 +142,17 @@ const RegisterForm = () => {
 
         {/* Country */}
         <div className="space-y-2">
-          <Label htmlFor="country">Country/Region</Label>
+          <Label htmlFor="country">{t('auth.country')}</Label>
           <Select onValueChange={handleCountryChange}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select your country/region" />
+              <SelectValue placeholder={t('auth.country')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="us">United States</SelectItem>
-              <SelectItem value="ca">Canada</SelectItem>
-              <SelectItem value="uk">United Kingdom</SelectItem>
-              <SelectItem value="au">Australia</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
+              <SelectItem value="us">{language === 'ar' ? 'الولايات المتحدة' : 'United States'}</SelectItem>
+              <SelectItem value="ca">{language === 'ar' ? 'كندا' : 'Canada'}</SelectItem>
+              <SelectItem value="uk">{language === 'ar' ? 'المملكة المتحدة' : 'United Kingdom'}</SelectItem>
+              <SelectItem value="au">{language === 'ar' ? 'أستراليا' : 'Australia'}</SelectItem>
+              <SelectItem value="other">{language === 'ar' ? 'أخرى' : 'Other'}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -155,7 +170,7 @@ const RegisterForm = () => {
             }} 
           />
           <Label htmlFor="volunteerInterest" className="text-sm font-normal">
-            I am interested in volunteering
+            {t('auth.volunteerInterest')}
           </Label>
         </div>
 
@@ -163,7 +178,7 @@ const RegisterForm = () => {
         {formData.volunteerInterest && (
           <div className="space-y-4 pt-2 border-t border-gray-200">
             <div className="space-y-2">
-              <Label htmlFor="phone">Phone Number (optional)</Label>
+              <Label htmlFor="phone">{t('auth.phoneNumber')}</Label>
               <Input
                 id="phone"
                 name="phone"
@@ -174,9 +189,9 @@ const RegisterForm = () => {
             </div>
 
             <div className="space-y-2">
-              <Label className="block mb-2">Areas of Interest</Label>
+              <Label className="block mb-2">{t('auth.areasOfInterest')}</Label>
               <div className="space-y-2">
-                {['Tree Planting', 'Cleanup', 'Education', 'Fundraising'].map(interest => (
+                {interests.map(interest => (
                   <div key={interest} className="flex items-center space-x-2">
                     <Checkbox 
                       id={`interest-${interest}`}
@@ -195,15 +210,15 @@ const RegisterForm = () => {
           </div>
         )}
 
-        <Button type="submit" className="w-full bg-green-500 hover:bg-green-600" disabled={isLoading}>
-          {isLoading ? "Creating account..." : "Sign up"}
+        <Button type="submit" className="w-full" disabled={isLoading}>
+          {isLoading ? "..." : t('auth.createAccount')}
         </Button>
 
         <div className="text-center">
           <p className="text-sm text-gray-600">
-            Already have an account?{" "}
+            {t('auth.alreadyAccount')}{" "}
             <Link to="/login" className="text-green-600 hover:text-green-700 font-medium">
-              Log in
+              {t('auth.loginInstead')}
             </Link>
           </p>
         </div>

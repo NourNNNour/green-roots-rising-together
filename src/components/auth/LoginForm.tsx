@@ -5,12 +5,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/use-toast';
+import { useLanguage } from '@/contexts/LanguageContext';
+import GoogleLoginButton from './GoogleLoginButton';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +23,7 @@ const LoginForm = () => {
     setTimeout(() => {
       toast({
         title: "Login Successful",
-        description: "Welcome back to GreenRoots!",
+        description: "Welcome back to " + t('project.name') + "!",
       });
       setIsLoading(false);
       // In a real app, we would redirect or update auth state here
@@ -29,9 +32,17 @@ const LoginForm = () => {
 
   return (
     <div className="w-full max-w-md mx-auto">
+      <div className="mb-6">
+        <GoogleLoginButton className="mb-4" />
+        <div className="relative flex items-center justify-center">
+          <div className="w-full border-t border-gray-300"></div>
+          <div className="relative px-4 bg-white text-sm text-gray-500">{t('auth.continue')}</div>
+        </div>
+      </div>
+
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t('auth.emailAddress')}</Label>
           <Input
             id="email"
             type="email"
@@ -43,9 +54,9 @@ const LoginForm = () => {
         </div>
         <div className="space-y-2">
           <div className="flex justify-between">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{t('auth.password')}</Label>
             <Link to="/forgot-password" className="text-sm text-green-600 hover:text-green-700">
-              Forgot password?
+              {t('auth.forgotPassword')}
             </Link>
           </div>
           <Input
@@ -56,15 +67,15 @@ const LoginForm = () => {
             required
           />
         </div>
-        <Button type="submit" className="w-full bg-green-500 hover:bg-green-600" disabled={isLoading}>
-          {isLoading ? "Logging in..." : "Log in"}
+        <Button type="submit" className="w-full" disabled={isLoading}>
+          {isLoading ? "..." : t('nav.login')}
         </Button>
 
         <div className="text-center">
           <p className="text-sm text-gray-600">
-            Don't have an account?{" "}
+            {t('auth.signup')}{" "}
             <Link to="/register" className="text-green-600 hover:text-green-700 font-medium">
-              Register
+              {t('auth.createAccount')}
             </Link>
           </p>
         </div>

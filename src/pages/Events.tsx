@@ -165,7 +165,7 @@ const Events = () => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full bg-green-500 hover:bg-green-600">
+          <Button className="w-full">
             {t('events.register')}
           </Button>
         </CardFooter>
@@ -238,7 +238,7 @@ const Events = () => {
           <p className="mb-6 max-w-2xl mx-auto text-gray-700">
             {t('events.calendarDescription')}
           </p>
-          <Button size="lg" className="bg-green-500 hover:bg-green-600">
+          <Button size="lg">
             {t('events.subscribeCalendar')}
           </Button>
         </div>

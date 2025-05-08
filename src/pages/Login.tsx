@@ -2,8 +2,11 @@
 import MainLayout from '@/components/layout/MainLayout';
 import LoginForm from '@/components/auth/LoginForm';
 import { Leaf } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Login = () => {
+  const { t } = useLanguage();
+  
   return (
     <MainLayout>
       <div className="min-h-[80vh] flex items-center justify-center p-4">
@@ -12,8 +15,8 @@ const Login = () => {
             <div className="flex justify-center">
               <Leaf className="h-12 w-12 text-green-500" />
             </div>
-            <h2 className="mt-6 text-3xl font-bold text-gray-900">Welcome back</h2>
-            <p className="mt-2 text-gray-600">Sign in to your GreenRoots account</p>
+            <h2 className="mt-6 text-3xl font-bold text-gray-900">{t('nav.login')}</h2>
+            <p className="mt-2 text-gray-600">{t('project.name')}</p>
           </div>
           <LoginForm />
         </div>

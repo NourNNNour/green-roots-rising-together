@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Mail } from "lucide-react";
+import { LogIn } from "lucide-react";
 
 interface GoogleLoginButtonProps {
   className?: string;
@@ -14,7 +14,7 @@ const GoogleLoginButton = ({ className = "" }: GoogleLoginButtonProps) => {
     try {
       // This would integrate with a real authentication provider in a real app
       console.log("Google login clicked");
-      // In a real app with Supabase or Firebase, this would call their auth methods
+      // In a real app with Supaauth or Firebase, this would call their auth methods
     } catch (error) {
       console.error("Google login error:", error);
     }
@@ -27,7 +27,7 @@ const GoogleLoginButton = ({ className = "" }: GoogleLoginButtonProps) => {
       className={`w-full ${className}`}
       onClick={handleGoogleLogin}
     >
-      <Mail className="mr-2 h-4 w-4" />
+      <LogIn className="mr-2 h-4 w-4" />
       {t('auth.login')}
     </Button>
   );

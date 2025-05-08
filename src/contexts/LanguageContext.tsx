@@ -21,6 +21,9 @@ const translations = {
     "nav.login": "Log In",
     "nav.join": "Join Us",
     
+    // Project name
+    "project.name": "Alakhdar",
+    
     // Home Page
     "hero.title": "Cultivating Change: Growing a Greener Future Together",
     "hero.description": "Join our mission to restore local ecosystems through community-driven tree planting and environmental conservation projects.",
@@ -146,6 +149,21 @@ const translations = {
     "auth.createAccount": "Create an account",
     "auth.alreadyAccount": "Already have an account?",
     "auth.loginInstead": "Log in instead",
+    "auth.forgotPassword": "Forgot password?",
+    "auth.resetPassword": "Reset Password",
+    "auth.resetInstructions": "Enter your email address and we'll send you instructions to reset your password.",
+    "auth.emailAddress": "Email Address",
+    "auth.password": "Password",
+    "auth.confirmPassword": "Confirm Password",
+    "auth.fullName": "Full Name",
+    "auth.phoneNumber": "Phone Number (optional)",
+    "auth.country": "Country/Region",
+    "auth.volunteerInterest": "I am interested in volunteering",
+    "auth.areasOfInterest": "Areas of Interest",
+    "auth.createPasswordAccount": "Create Password",
+    "auth.backToLogin": "Back to login",
+    "auth.sendResetLink": "Send Reset Link",
+    "auth.resetLinkSent": "Reset link sent! Check your email.",
   },
   ar: {
     // Navigation
@@ -156,6 +174,9 @@ const translations = {
     "nav.contact": "اتصل بنا",
     "nav.login": "تسجيل الدخول",
     "nav.join": "انضم إلينا",
+    
+    // Project name
+    "project.name": "الأخضر",
     
     // Home Page
     "hero.title": "زراعة التغيير: نمو مستقبل أكثر اخضرارًا معًا",
@@ -282,6 +303,21 @@ const translations = {
     "auth.createAccount": "إنشاء حساب",
     "auth.alreadyAccount": "لديك حساب بالفعل؟",
     "auth.loginInstead": "تسجيل الدخول بدلاً من ذلك",
+    "auth.forgotPassword": "نسيت كلمة المرور؟",
+    "auth.resetPassword": "إعادة تعيين كلمة المرور",
+    "auth.resetInstructions": "أدخل عنوان بريدك الإلكتروني وسنرسل لك تعليمات لإعادة تعيين كلمة المرور الخاصة بك.",
+    "auth.emailAddress": "عنوان البريد الإلكتروني",
+    "auth.password": "كلمة المرور",
+    "auth.confirmPassword": "تأكيد كلمة المرور",
+    "auth.fullName": "الاسم الكامل",
+    "auth.phoneNumber": "رقم الهاتف (اختياري)",
+    "auth.country": "البلد/المنطقة",
+    "auth.volunteerInterest": "أنا مهتم بالتطوع",
+    "auth.areasOfInterest": "مجالات الاهتمام",
+    "auth.createPasswordAccount": "إنشاء كلمة المرور",
+    "auth.backToLogin": "العودة إلى تسجيل الدخول",
+    "auth.sendResetLink": "إرسال رابط إعادة التعيين",
+    "auth.resetLinkSent": "تم إرسال رابط إعادة التعيين! تحقق من بريدك الإلكتروني.",
   }
 };
 
