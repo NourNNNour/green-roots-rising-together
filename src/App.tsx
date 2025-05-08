@@ -15,6 +15,7 @@ import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
 import Volunteer from "./pages/Volunteer";
 import Donate from "./pages/Donate";
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/volunteer" element={<Volunteer />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/events" element={<Events />} />
