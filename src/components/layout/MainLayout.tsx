@@ -13,9 +13,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   const { language } = useLanguage();
   const location = useLocation();
   
-  // Scroll to top when location changes
+  // Scroll to top when location changes with smooth behavior
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ 
+      top: 0,
+      behavior: 'smooth'
+    });
   }, [location]);
   
   return (

@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Leaf, Menu, X } from 'lucide-react';
@@ -10,11 +10,39 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
   const location = useLocation();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Scroll to top when location changes (page navigation)
+  // Scroll to top when location changes with smooth behavior
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ 
+      top: 0, 
+      behavior: 'smooth' 
+    });
+    
+    // Close mobile menu when navigating
+    setIsMenuOpen(false);
   }, [location]);
+
+  // Handle click outside to close menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen && 
+        menuRef.current && 
+        !menuRef.current.contains(event.target as Node) &&
+        menuButtonRef.current && 
+        !menuButtonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -51,14 +79,18 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-gray-600" onClick={toggleMenu}>
+          <button 
+            ref={menuButtonRef}
+            className="md:hidden text-gray-600" 
+            onClick={toggleMenu}
+          >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
+          <div ref={menuRef} className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-4">
               <Link to="/" className="text-foreground hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.home')}</Link>
               <Link to="/about" className="text-foreground hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.about')}</Link>
