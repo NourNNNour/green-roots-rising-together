@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Leaf, Menu, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -9,6 +9,12 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation();
+
+  // Scroll to top when location changes (page navigation)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
