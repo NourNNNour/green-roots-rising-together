@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -11,6 +12,7 @@ interface MainLayoutProps {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const location = useLocation();
   
   // Scroll to top when location changes with smooth behavior
@@ -22,9 +24,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   }, [location]);
   
   return (
-    <div className={`flex min-h-screen flex-col ${language === 'ar' ? 'font-tajawal' : ''}`}>
+    <div className={`flex min-h-screen flex-col ${language === 'ar' ? 'font-tajawal' : ''} ${theme === 'dark' ? 'dark' : ''}`}>
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow dark:bg-gray-900 dark:text-white">
         {children}
       </main>
       <Footer />

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Leaf, Menu, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { DarkModeToggle } from '@/components/DarkModeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,7 +50,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -60,18 +61,19 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center md:space-x-8">
-            <Link to="/" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.home')}</Link>
-            <Link to="/about" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.about')}</Link>
-            <Link to="/projects" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.projects')}</Link>
-            <Link to="/blog" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.blog')}</Link>
-            <Link to="/contact" className="text-foreground hover:text-green-500 transition-colors mx-3">{t('nav.contact')}</Link>
+            <Link to="/" className="text-foreground dark:text-gray-200 hover:text-green-500 transition-colors mx-3">{t('nav.home')}</Link>
+            <Link to="/about" className="text-foreground dark:text-gray-200 hover:text-green-500 transition-colors mx-3">{t('nav.about')}</Link>
+            <Link to="/projects" className="text-foreground dark:text-gray-200 hover:text-green-500 transition-colors mx-3">{t('nav.projects')}</Link>
+            <Link to="/blog" className="text-foreground dark:text-gray-200 hover:text-green-500 transition-colors mx-3">{t('nav.blog')}</Link>
+            <Link to="/contact" className="text-foreground dark:text-gray-200 hover:text-green-500 transition-colors mx-3">{t('nav.contact')}</Link>
           </div>
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            <DarkModeToggle />
             <LanguageSwitcher />
             <Link to="/login">
-              <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-50">{t('nav.login')}</Button>
+              <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-50 dark:hover:bg-green-950">{t('nav.login')}</Button>
             </Link>
             <Link to="/register">
               <Button className="bg-green-500 hover:bg-green-600 text-white">{t('nav.join')}</Button>
@@ -81,7 +83,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button 
             ref={menuButtonRef}
-            className="md:hidden text-gray-600" 
+            className="md:hidden text-gray-600 dark:text-gray-300" 
             onClick={toggleMenu}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -92,22 +94,23 @@ const Navbar = () => {
         {isMenuOpen && (
           <div ref={menuRef} className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-4">
-              <Link to="/" className="text-foreground hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.home')}</Link>
-              <Link to="/about" className="text-foreground hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.about')}</Link>
-              <Link to="/projects" className="text-foreground hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.projects')}</Link>
-              <Link to="/blog" className="text-foreground hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.blog')}</Link>
-              <Link to="/contact" className="text-foreground hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.contact')}</Link>
+              <Link to="/" className="text-foreground dark:text-gray-200 hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.home')}</Link>
+              <Link to="/about" className="text-foreground dark:text-gray-200 hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.about')}</Link>
+              <Link to="/projects" className="text-foreground dark:text-gray-200 hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.projects')}</Link>
+              <Link to="/blog" className="text-foreground dark:text-gray-200 hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.blog')}</Link>
+              <Link to="/contact" className="text-foreground dark:text-gray-200 hover:text-green-500 py-2 transition-colors" onClick={toggleMenu}>{t('nav.contact')}</Link>
               
-              <div className="flex items-center mb-2">
+              <div className="flex items-center space-x-3 mb-2">
+                <DarkModeToggle />
                 <LanguageSwitcher />
               </div>
               
               <div className="flex flex-col space-y-3 pt-2">
                 <Link to="/login" onClick={toggleMenu}>
-                  <Button variant="outline" className="w-full border-green-500 text-green-500 hover:bg-green-50">{t('nav.login')}</Button>
+                  <Button variant="outline" className="w-full border-green-500 text-green-500 hover:bg-green-50 dark:hover:bg-green-950">{t('nav.login')}</Button>
                 </Link>
                 <Link to="/register" onClick={toggleMenu}>
-                  <Button variant="outline" className="w-full bg-green-500 hover:bg-green-600 text-white">{t('nav.join')}</Button>
+                  <Button className="w-full bg-green-500 hover:bg-green-600 text-white">{t('nav.join')}</Button>
                 </Link>
               </div>
             </div>

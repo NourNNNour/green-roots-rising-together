@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'ar' | 'en';
@@ -76,6 +75,10 @@ const translations = {
     "language": "Language",
     "language.en": "English",
     "language.ar": "Arabic",
+    
+    // Theme
+    "theme.light": "Light Mode",
+    "theme.dark": "Dark Mode",
     
     // Blog
     "blog.title": "Our Blog",
@@ -200,6 +203,10 @@ const translations = {
     "help.donate.title": "قدم تبرعًا",
     "help.donate.description": "يساعد دعمك المالي في شراء الشتلات والأدوات والموارد اللازمة لمشاريعنا البيئية. كل مساهمة، مهما كان حجمها، تحدث تأثيرًا كبيرًا.",
     "help.donate.button": "تبرع الآن",
+    
+    // Theme
+    "theme.light": "الوضع المضيء",
+    "theme.dark": "الوضع المظلم",
     
     // CTA
     "cta.title": "انضم إلى مهمتنا اليوم",

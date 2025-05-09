@@ -13,6 +13,17 @@ import {
 export const LanguageSwitcher = () => {
   const { language, setLanguage, t } = useLanguage();
 
+  // Function to handle language change and force reload styles for proper RTL/LTR
+  const handleLanguageChange = (newLang: 'en' | 'ar') => {
+    setLanguage(newLang);
+    // Force a small timeout to ensure DOM update
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = 'auto';
+      window.scrollTo(0, 0);
+      document.documentElement.style.scrollBehavior = '';
+    }, 10);
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -21,15 +32,15 @@ export const LanguageSwitcher = () => {
           <span>{t('language')}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="z-50">
         <DropdownMenuItem 
-          onClick={() => setLanguage('ar')} 
+          onClick={() => handleLanguageChange('ar')} 
           className={language === 'ar' ? 'bg-green-50 text-green-600' : ''}
         >
           {t('language.ar')}
         </DropdownMenuItem>
         <DropdownMenuItem 
-          onClick={() => setLanguage('en')} 
+          onClick={() => handleLanguageChange('en')} 
           className={language === 'en' ? 'bg-green-50 text-green-600' : ''}
         >
           {t('language.en')}
