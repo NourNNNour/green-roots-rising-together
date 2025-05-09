@@ -31,7 +31,7 @@ const Hero = () => {
               <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white">{t('hero.volunteer')}</Button>
             </Link>
             <Link to="/donate">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20">{t('hero.donate')}</Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-transparent bg-transparent">{t('hero.donate')}</Button>
             </Link>
           </div>
         </div>
