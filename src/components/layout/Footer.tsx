@@ -4,7 +4,7 @@ import { Leaf, Heart, Twitter, Facebook } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   return (
     <footer className="bg-green-600 text-white">
@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <Leaf className="h-6 w-6" />
-              <span className="font-montserrat font-bold text-xl">GreenRoots</span>
+              <span className="font-montserrat font-bold text-xl">{t('project.name')}</span>
             </div>
             <p className="text-green-50 mb-4">
               {t('footer.mission')}
@@ -62,7 +62,7 @@ const Footer = () => {
                 <Link to="/donate" className="text-green-50 hover:text-white transition-colors">{t('hero.donate')}</Link>
               </li>
               <li>
-                <Link to="/events" className="text-green-50 hover:text-white transition-colors">Events</Link>
+                <Link to="/events" className="text-green-50 hover:text-white transition-colors">{language === 'ar' ? 'الفعاليات' : 'Events'}</Link>
               </li>
             </ul>
           </div>
@@ -73,14 +73,14 @@ const Footer = () => {
             <address className="not-italic text-green-50">
               <p>123 Green Street</p>
               <p>Earth City, Planet 12345</p>
-              <p className="mt-2">Email: info@greenroots.org</p>
+              <p className="mt-2">Email: info@alakhdar.org</p>
               <p>Phone: (555) 123-4567</p>
             </address>
           </div>
         </div>
 
         <div className="border-t border-green-500 mt-8 pt-8 text-center md:flex md:justify-between md:text-left">
-          <p className="text-green-50">&copy; {new Date().getFullYear()} GreenRoots. {t('footer.rights')}</p>
+          <p className="text-green-50">&copy; {new Date().getFullYear()} {t('project.name')}. {t('footer.rights')}</p>
           <p className="text-green-50 mt-2 md:mt-0">
             {t('footer.made')} <Heart className="inline-block h-4 w-4 text-red-400" fill="currentColor" /> {t('footer.planet')}
           </p>
