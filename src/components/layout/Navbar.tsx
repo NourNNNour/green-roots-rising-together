@@ -32,7 +32,8 @@ const Navbar = () => {
       if (event.target instanceof Element) {
         const isLanguageSwitcherClick = 
           event.target.closest('[data-radix-dropdown-menu]') ||
-          event.target.closest('.language-switcher');
+          event.target.closest('.language-switcher') ||
+          event.target.closest('[data-no-menu-close="true"]');
         
         if (isLanguageSwitcherClick) {
           return;
@@ -59,6 +60,20 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Add event listener to prevent closing parent menus when language menu items are clicked
+  useEffect(() => {
+    const preventDefaultClosing = (e: MouseEvent) => {
+      if (e.target instanceof Element && e.target.closest('[data-no-menu-close="true"]')) {
+        e.stopPropagation();
+      }
+    };
+
+    document.addEventListener('click', preventDefaultClosing, true);
+    return () => {
+      document.removeEventListener('click', preventDefaultClosing, true);
+    };
+  }, []);
 
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50">

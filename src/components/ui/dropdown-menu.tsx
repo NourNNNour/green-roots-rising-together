@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { Check, ChevronRight, Circle } from "lucide-react"
@@ -77,17 +78,31 @@ const DropdownMenuItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean
   }
->(({ className, inset, ...props }, ref) => (
-  <DropdownMenuPrimitive.Item
-    ref={ref}
-    className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      inset && "pl-8",
-      className
-    )}
-    {...props}
-  />
-))
+>(({ className, inset, ...props }, ref) => {
+  // Check if the component has data-no-menu-close attribute
+  const isNoClose = 'data-no-menu-close' in props;
+  
+  // Create a wrapper component if the item should prevent closing
+  const ContentComponent = isNoClose 
+    ? React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>((divProps, divRef) => (
+        <div ref={divRef} {...divProps} onClick={(e) => e.stopPropagation()} />
+      ))
+    : React.Fragment;
+
+  return (
+    <ContentComponent>
+      <DropdownMenuPrimitive.Item
+        ref={ref}
+        className={cn(
+          "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+          inset && "pl-8",
+          className
+        )}
+        {...props}
+      />
+    </ContentComponent>
+  );
+})
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 
 const DropdownMenuCheckboxItem = React.forwardRef<

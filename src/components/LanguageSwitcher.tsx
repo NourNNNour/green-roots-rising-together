@@ -42,6 +42,7 @@ export const LanguageSwitcher = () => {
             e.stopPropagation();
             handleLanguageChange('ar');
           }}
+          data-no-menu-close="true"
           className={language === 'ar' ? 'bg-green-50 text-green-600 dark:bg-green-900 dark:text-green-300' : ''}
         >
           {t('language.ar')}
@@ -52,6 +53,7 @@ export const LanguageSwitcher = () => {
             e.stopPropagation();
             handleLanguageChange('en');
           }}
+          data-no-menu-close="true"
           className={language === 'en' ? 'bg-green-50 text-green-600 dark:bg-green-900 dark:text-green-300' : ''}
         >
           {t('language.en')}
