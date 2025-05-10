@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
@@ -14,7 +14,7 @@ export const LanguageSwitcher = () => {
   const { language, setLanguage, t } = useLanguage();
 
   // Function to handle language change and force reload styles for proper RTL/LTR
-  const handleLanguageChange = (newLang: 'en' | 'ar') => {
+  const handleLanguageChange = useCallback((newLang: 'en' | 'ar') => {
     // Only change if it's different from current language
     if (newLang !== language) {
       setLanguage(newLang);
@@ -25,7 +25,7 @@ export const LanguageSwitcher = () => {
         document.documentElement.style.scrollBehavior = '';
       }, 10);
     }
-  };
+  }, [language, setLanguage]);
 
   return (
     <DropdownMenu>
@@ -37,23 +37,13 @@ export const LanguageSwitcher = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="z-50">
         <DropdownMenuItem 
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            handleLanguageChange('ar');
-          }}
-          data-no-menu-close="true"
+          onClick={() => handleLanguageChange('ar')}
           className={language === 'ar' ? 'bg-green-50 text-green-600 dark:bg-green-900 dark:text-green-300' : ''}
         >
           {t('language.ar')}
         </DropdownMenuItem>
         <DropdownMenuItem 
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            handleLanguageChange('en');
-          }}
-          data-no-menu-close="true"
+          onClick={() => handleLanguageChange('en')}
           className={language === 'en' ? 'bg-green-50 text-green-600 dark:bg-green-900 dark:text-green-300' : ''}
         >
           {t('language.en')}
