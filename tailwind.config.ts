@@ -132,6 +132,16 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			backgroundColor: {
+				'dark': '#1a1f2c',
+				'dark-card': '#222222',
+				'dark-accent': '#2c2c2c',
+				'dark-hover': '#333333',
+			},
+			textColor: {
+				'dark-text': '#e5e7eb',
+				'dark-muted': '#9ca3af',
 			}
 		}
 	},

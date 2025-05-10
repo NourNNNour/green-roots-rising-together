@@ -24,12 +24,14 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   }, [location]);
   
   return (
-    <div className={`flex min-h-screen flex-col ${language === 'ar' ? 'font-tajawal' : ''} ${theme === 'dark' ? 'dark' : ''}`}>
-      <Navbar />
-      <main className="flex-grow dark:bg-gray-900 dark:text-white">
-        {children}
-      </main>
-      <Footer />
+    <div className={`${theme === 'dark' ? 'dark' : ''} transition-colors duration-300`}>
+      <div className={`flex min-h-screen flex-col ${language === 'ar' ? 'font-tajawal' : ''} dark:bg-gray-900 dark:text-white`}>
+        <Navbar />
+        <main className="flex-grow dark:bg-gray-900 dark:text-white">
+          {children}
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
