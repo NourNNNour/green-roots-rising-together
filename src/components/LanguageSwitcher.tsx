@@ -15,13 +15,16 @@ export const LanguageSwitcher = () => {
 
   // Function to handle language change and force reload styles for proper RTL/LTR
   const handleLanguageChange = (newLang: 'en' | 'ar') => {
-    setLanguage(newLang);
-    // Force a small timeout to ensure DOM update
-    setTimeout(() => {
-      document.documentElement.style.scrollBehavior = 'auto';
-      window.scrollTo(0, 0);
-      document.documentElement.style.scrollBehavior = '';
-    }, 10);
+    // Only change if it's different from current language
+    if (newLang !== language) {
+      setLanguage(newLang);
+      // Force a small timeout to ensure DOM update
+      setTimeout(() => {
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, 0);
+        document.documentElement.style.scrollBehavior = '';
+      }, 10);
+    }
   };
 
   return (
@@ -34,14 +37,22 @@ export const LanguageSwitcher = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="z-50">
         <DropdownMenuItem 
-          onClick={() => handleLanguageChange('ar')} 
-          className={language === 'ar' ? 'bg-green-50 text-green-600' : ''}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleLanguageChange('ar');
+          }}
+          className={language === 'ar' ? 'bg-green-50 text-green-600 dark:bg-green-900 dark:text-green-300' : ''}
         >
           {t('language.ar')}
         </DropdownMenuItem>
         <DropdownMenuItem 
-          onClick={() => handleLanguageChange('en')} 
-          className={language === 'en' ? 'bg-green-50 text-green-600' : ''}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleLanguageChange('en');
+          }}
+          className={language === 'en' ? 'bg-green-50 text-green-600 dark:bg-green-900 dark:text-green-300' : ''}
         >
           {t('language.en')}
         </DropdownMenuItem>

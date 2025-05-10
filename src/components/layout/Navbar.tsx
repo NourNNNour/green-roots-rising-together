@@ -28,6 +28,17 @@ const Navbar = () => {
   // Handle click outside to close menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Don't close if clicking language switcher elements
+      if (event.target instanceof Element) {
+        const isLanguageSwitcherClick = 
+          event.target.closest('[data-radix-dropdown-menu]') ||
+          event.target.closest('.language-switcher');
+        
+        if (isLanguageSwitcherClick) {
+          return;
+        }
+      }
+      
       if (
         isMenuOpen && 
         menuRef.current && 
@@ -71,7 +82,9 @@ const Navbar = () => {
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <DarkModeToggle />
-            <LanguageSwitcher />
+            <div className="language-switcher">
+              <LanguageSwitcher />
+            </div>
             <Link to="/login">
               <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-50 dark:hover:bg-green-950">{t('nav.login')}</Button>
             </Link>
@@ -102,7 +115,9 @@ const Navbar = () => {
               
               <div className="flex items-center space-x-3 mb-2">
                 <DarkModeToggle />
-                <LanguageSwitcher />
+                <div className="language-switcher">
+                  <LanguageSwitcher />
+                </div>
               </div>
               
               <div className="flex flex-col space-y-3 pt-2">
