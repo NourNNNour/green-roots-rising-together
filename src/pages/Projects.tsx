@@ -19,7 +19,7 @@ const ProjectCard = ({ title, description, imageUrl, progress, location, categor
   const { t } = useLanguage();
   
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
       <img 
         src={imageUrl} 
         alt={title} 
@@ -27,20 +27,20 @@ const ProjectCard = ({ title, description, imageUrl, progress, location, categor
       />
       <div className="p-6">
         <div className="flex justify-between items-start mb-2">
-          <h3 className="font-bold text-xl text-green-700">{title}</h3>
-          <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">{category}</span>
+          <h3 className="font-bold text-xl text-green-700 dark:text-green-400">{title}</h3>
+          <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 text-xs font-medium px-2.5 py-0.5 rounded">{category}</span>
         </div>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
         <div className="mb-4">
           <div className="flex justify-between text-sm mb-1">
-            <span className="font-medium">{t('projects.progress')}</span>
-            <span className="font-medium">{progress}%</span>
+            <span className="font-medium dark:text-gray-300">{t('projects.progress')}</span>
+            <span className="font-medium dark:text-gray-300">{progress}%</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
             <div className="bg-green-500 h-2 rounded-full" style={{ width: `${progress}%` }}></div>
           </div>
         </div>
-        <div className="text-sm text-gray-500 mb-4">
+        <div className="text-sm text-gray-500 dark:text-gray-400 mb-4">
           <span>{location}</span>
         </div>
         <Link to={`/projects/${id}`} className="block text-center">
@@ -116,18 +116,18 @@ const Projects = () => {
 
   return (
     <MainLayout>
-      <div className="bg-gray-50 py-16 md:py-24">
+      <div className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-green-700">{t('projects.title')}</h1>
-            <p className="text-lg max-w-3xl mx-auto text-gray-700">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-green-700 dark:text-green-400">{t('projects.title')}</h1>
+            <p className="text-lg max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
               {t('projects.description')}
             </p>
           </div>
           
           <div className="mb-12">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-semibold text-green-600">{t('projects.active')}</h2>
+              <h2 className="text-2xl md:text-3xl font-semibold text-green-600 dark:text-green-400">{t('projects.active')}</h2>
               <div className="flex items-center gap-2">
                 {/* Filters could be added here in a future enhancement */}
               </div>
@@ -140,14 +140,14 @@ const Projects = () => {
             </div>
           </div>
           
-          <div className="bg-green-50 rounded-lg p-8 md:p-12 text-center">
+          <div className="bg-green-50 dark:bg-gray-800 rounded-lg p-8 md:p-12 text-center">
             <div className="mb-6 flex justify-center">
               <div className="bg-green-500 text-white rounded-full p-3">
                 <Projector className="w-8 h-8" />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-green-700">{t('projects.idea.title')}</h2>
-            <p className="text-lg mb-6 max-w-2xl mx-auto text-gray-700">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-green-700 dark:text-green-400">{t('projects.idea.title')}</h2>
+            <p className="text-lg mb-6 max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
               {t('projects.idea.description')}
             </p>
             <Link to="/contact">

@@ -15,16 +15,16 @@ const ProjectCard = ({ imageUrl, title, description, link }: ProjectCardProps) =
   const { t } = useLanguage();
   
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden card-hover">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden card-hover">
       <img 
         src={imageUrl} 
         alt={title} 
         className="w-full h-48 object-cover"
       />
       <div className="p-6">
-        <h3 className="font-bold text-xl mb-2 text-green-700">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
-        <Link to={link} className="text-green-500 font-medium inline-flex items-center hover:text-green-700 transition-colors">
+        <h3 className="font-bold text-xl mb-2 text-green-700 dark:text-green-400">{title}</h3>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+        <Link to={link} className="text-green-500 font-medium inline-flex items-center hover:text-green-700 dark:hover:text-green-300 transition-colors">
           {t('projects.learnMore')} <ArrowUp className="w-4 h-4 ml-1 rotate-45" />
         </Link>
       </div>
@@ -61,11 +61,11 @@ const ProjectsSection = () => {
   ];
   
   return (
-    <section className="section-padding bg-green-50">
+    <section className="section-padding bg-green-50 dark:bg-gray-800">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.title')}</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">{t('projects.title')}</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             {t('projects.description')}
           </p>
         </div>
@@ -83,8 +83,8 @@ const ProjectsSection = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center p-12 bg-white rounded-lg mb-12 shadow">
-            <p className="text-gray-600">No projects available at the moment.</p>
+          <div className="text-center p-12 bg-white dark:bg-gray-800 rounded-lg mb-12 shadow">
+            <p className="text-gray-600 dark:text-gray-400">No projects available at the moment.</p>
           </div>
         )}
 

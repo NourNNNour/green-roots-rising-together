@@ -97,17 +97,17 @@ const Contact = () => {
   
   return (
     <MainLayout>
-      <div className="bg-gray-50 py-16 md:py-24">
+      <div className="bg-gray-50 dark:bg-gray-900 py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-green-700">{c.title}</h1>
-            <p className="text-lg text-center mb-12 text-gray-700">
+            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-green-700 dark:text-green-400">{c.title}</h1>
+            <p className="text-lg text-center mb-12 text-gray-700 dark:text-gray-300">
               {c.description}
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Contact Form */}
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
                 {isSubmitted ? (
                   <div className="text-center py-8">
                     <div className="mb-6 text-green-500 flex justify-center">
@@ -115,18 +115,18 @@ const Contact = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold mb-4 text-green-700">{c.thankYouTitle}</h3>
-                    <p className="text-gray-700 mb-6">{c.thankYouMessage}</p>
+                    <h3 className="text-2xl font-bold mb-4 text-green-700 dark:text-green-400">{c.thankYouTitle}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6">{c.thankYouMessage}</p>
                     <Button onClick={() => setIsSubmitted(false)} className="bg-green-500 hover:bg-green-600">
                       {c.sendAnother}
                     </Button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit}>
-                    <h2 className="text-2xl font-semibold mb-6 text-green-600">{c.formTitle}</h2>
+                    <h2 className="text-2xl font-semibold mb-6 text-green-600 dark:text-green-400">{c.formTitle}</h2>
                     <div className="space-y-6">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           {c.nameLabel}
                         </label>
                         <input
@@ -136,11 +136,11 @@ const Contact = () => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 dark:text-white"
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           {c.emailLabel}
                         </label>
                         <input
@@ -150,11 +150,11 @@ const Contact = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 dark:text-white"
                         />
                       </div>
                       <div>
-                        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           {c.subjectLabel}
                         </label>
                         <input
@@ -164,11 +164,11 @@ const Contact = () => {
                           value={formData.subject}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 dark:text-white"
                         />
                       </div>
                       <div>
-                        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           {c.messageLabel}
                         </label>
                         <textarea
@@ -178,7 +178,7 @@ const Contact = () => {
                           value={formData.message}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 dark:text-white"
                         ></textarea>
                       </div>
                       <Button
@@ -195,32 +195,32 @@ const Contact = () => {
               
               {/* Contact Information */}
               <div>
-                <div className="bg-white p-8 rounded-lg shadow-md mb-8">
-                  <h2 className="text-2xl font-semibold mb-6 text-green-600">{c.contactInfo.title}</h2>
+                <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md mb-8">
+                  <h2 className="text-2xl font-semibold mb-6 text-green-600 dark:text-green-400">{c.contactInfo.title}</h2>
                   <div className="space-y-4">
                     <div>
-                      <h3 className="font-semibold text-lg text-green-700">{c.contactInfo.addressTitle}</h3>
-                      <p className="text-gray-600">{c.contactInfo.address}</p>
+                      <h3 className="font-semibold text-lg text-green-700 dark:text-green-400">{c.contactInfo.addressTitle}</h3>
+                      <p className="text-gray-600 dark:text-gray-300">{c.contactInfo.address}</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-green-700">{c.contactInfo.emailTitle}</h3>
-                      <p className="text-gray-600">info@greenroots.org</p>
+                      <h3 className="font-semibold text-lg text-green-700 dark:text-green-400">{c.contactInfo.emailTitle}</h3>
+                      <p className="text-gray-600 dark:text-gray-300">info@greenroots.org</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-green-700">{c.contactInfo.phoneTitle}</h3>
-                      <p className="text-gray-600">(555) 123-4567</p>
+                      <h3 className="font-semibold text-lg text-green-700 dark:text-green-400">{c.contactInfo.phoneTitle}</h3>
+                      <p className="text-gray-600 dark:text-gray-300">(555) 123-4567</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-green-700">{c.contactInfo.hoursTitle}</h3>
-                      <p className="text-gray-600">{c.contactInfo.hours}</p>
+                      <h3 className="font-semibold text-lg text-green-700 dark:text-green-400">{c.contactInfo.hoursTitle}</h3>
+                      <p className="text-gray-600 dark:text-gray-300">{c.contactInfo.hours}</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-white p-8 rounded-lg shadow-md">
-                  <h2 className="text-2xl font-semibold mb-6 text-green-600">{c.mapTitle}</h2>
-                  <div className="aspect-ratio border border-gray-300 rounded-md bg-gray-100 flex items-center justify-center h-64">
-                    <div className="flex flex-col items-center text-gray-500">
+                <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+                  <h2 className="text-2xl font-semibold mb-6 text-green-600 dark:text-green-400">{c.mapTitle}</h2>
+                  <div className="aspect-ratio border border-gray-300 dark:border-gray-600 rounded-md bg-gray-100 dark:bg-gray-700 flex items-center justify-center h-64">
+                    <div className="flex flex-col items-center text-gray-500 dark:text-gray-400">
                       <Map className="w-12 h-12 mb-2" />
                       <p>{c.mapPlaceholder}</p>
                     </div>
