@@ -12,13 +12,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react({
-      // Enable SWC's JSX Optimization
-      jsxImportSource: '@emotion/react',
-      babel: {
-        plugins: [
-          ['@babel/plugin-syntax-import-assertions'],
-        ]
-      }
+      // Using standard React JSX transformation instead of Emotion
+      jsxImportSource: undefined, // Remove emotion/react
     }),
     mode === 'development' &&
     componentTagger(),
