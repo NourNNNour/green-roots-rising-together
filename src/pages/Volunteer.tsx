@@ -99,7 +99,21 @@ const Volunteer = () => {
       </div>
 
       <div className="container mx-auto py-12 px-4">
-        {/* Why Volunteer Section */}
+        {/* Opportunities Section - Now FIRST */}
+        <h2 className="text-3xl font-bold text-center mb-8 text-green-700">{t('volunteer.opportunitiesTitle')}</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+          {opportunities.length > 0 ? (
+            opportunities.map((opportunity) => (
+              <VolunteerOpportunity key={opportunity.id} {...opportunity} />
+            ))
+          ) : (
+            <div className="col-span-2 text-center p-8 bg-gray-50 rounded-lg">
+              <p className="text-gray-600">{t('volunteer.noOpportunities')}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Why Volunteer Section - Now SECOND */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-green-700">{t('volunteer.whyTitle')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -125,20 +139,6 @@ const Volunteer = () => {
               <p className="text-gray-600">{t('volunteer.reason3Text')}</p>
             </div>
           </div>
-        </div>
-
-        {/* Opportunities Section */}
-        <h2 className="text-3xl font-bold text-center mb-8 text-green-700">{t('volunteer.opportunitiesTitle')}</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {opportunities.length > 0 ? (
-            opportunities.map((opportunity) => (
-              <VolunteerOpportunity key={opportunity.id} {...opportunity} />
-            ))
-          ) : (
-            <div className="col-span-2 text-center p-8 bg-gray-50 rounded-lg">
-              <p className="text-gray-600">{t('volunteer.noOpportunities')}</p>
-            </div>
-          )}
         </div>
 
         {/* Can't find section */}
