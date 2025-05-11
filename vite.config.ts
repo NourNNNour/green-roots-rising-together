@@ -11,7 +11,15 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
-    react(),
+    react({
+      // Enable SWC's JSX Optimization
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: [
+          ['@babel/plugin-syntax-import-assertions'],
+        ]
+      }
+    }),
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
@@ -27,15 +35,32 @@ export default defineConfig(({ mode }) => ({
     outDir: 'dist',
     minify: mode === 'production',
     cssCodeSplit: true,
+    reportCompressedSize: true, // Report gzipped file size
+    chunkSizeWarningLimit: 1000, // Warn when chunks exceed 1MB
     rollupOptions: {
       output: {
         // Ensure chunks work well with SSR
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
+            // Split vendor chunks intelligently
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor-react';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'vendor-radix';
+            }
             return 'vendor';
           }
         },
+        // Optimize chunk names for better caching
+        entryFileNames: '[name].[hash].js',
+        chunkFileNames: '[name].[hash].js',
+        assetFileNames: '[name].[hash].[ext]',
       },
     },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom'],
+    exclude: [], 
   },
 }));

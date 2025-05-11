@@ -14,6 +14,7 @@ interface MainLayoutProps {
   image?: string;
   article?: boolean;
   noindex?: boolean;
+  structuredData?: Record<string, any>;
 }
 
 const MainLayout = ({ 
@@ -22,7 +23,8 @@ const MainLayout = ({
   description,
   image,
   article,
-  noindex 
+  noindex,
+  structuredData
 }: MainLayoutProps) => {
   const { language } = useLanguage();
   const { theme } = useTheme();
@@ -36,6 +38,12 @@ const MainLayout = ({
     });
   }, [location]);
   
+  // Ensure 'language' data attribute is set for SEO purposes
+  useEffect(() => {
+    document.documentElement.setAttribute('lang', language);
+    document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+  }, [language]);
+  
   return (
     <div className={`${theme === 'dark' ? 'dark' : ''} transition-colors duration-300`}>
       <SEO
@@ -44,6 +52,7 @@ const MainLayout = ({
         image={image}
         article={article}
         noindex={noindex}
+        structuredData={structuredData}
       />
       <div className={`flex min-h-screen flex-col ${language === 'ar' ? 'font-tajawal' : ''} dark:bg-gray-900 dark:text-white`}>
         <Navbar />

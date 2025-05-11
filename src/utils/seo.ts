@@ -14,7 +14,11 @@ const BASE_URL = 'https://alakhdar.org'; // Replace with your actual domain in p
 export const getCanonicalUrl = (path: string): string => {
   // Ensure path starts with a slash and remove any trailing slash
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  return `${BASE_URL}${normalizedPath}`;
+  // Remove trailing slash if present (except for root path)
+  const cleanPath = normalizedPath !== '/' && normalizedPath.endsWith('/') 
+    ? normalizedPath.slice(0, -1) 
+    : normalizedPath;
+  return `${BASE_URL}${cleanPath}`;
 };
 
 /**
@@ -23,32 +27,72 @@ export const getCanonicalUrl = (path: string): string => {
  * @param description - Page description
  * @param path - Current page path
  * @param imageUrl - Optional image URL for social sharing
+ * @param type - Content type (default: website)
+ * @param locale - Content locale (default: en_US)
+ * @param noindex - Whether to prevent indexing (default: false)
  * @returns Object containing meta information
  */
 export const generateMetaTags = (
   title: string,
   description: string,
   path: string,
-  imageUrl?: string
+  imageUrl?: string,
+  type: 'website' | 'article' | 'profile' = 'website',
+  locale: string = 'en_US',
+  noindex: boolean = false
 ) => {
   const canonicalUrl = getCanonicalUrl(path);
   const image = imageUrl || `${BASE_URL}/default-social-image.jpg`; // Default image
   
   return {
-    title,
-    description,
+    title: title,
+    description: description,
     canonical: canonicalUrl,
     openGraph: {
-      title,
-      description,
+      title: title,
+      description: description,
       url: canonicalUrl,
-      image,
+      image: image,
+      type: type,
+      locale: locale,
+      siteName: 'Alakhdar',
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
-      image,
-    }
+      title: title,
+      description: description,
+      image: image,
+      creator: '@alakhdar', // Replace with actual Twitter handle
+    },
+    noindex: noindex,
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': type === 'article' ? 'Article' : 'WebPage',
+      headline: title,
+      description: description,
+      image: image,
+      url: canonicalUrl,
+      publisher: {
+        '@type': 'Organization',
+        name: 'Alakhdar',
+        logo: {
+          '@type': 'ImageObject',
+          url: `${BASE_URL}/logo.png`,
+        },
+      },
+    },
+  };
+};
+
+/**
+ * Get appropriate language metadata based on current language
+ * @param language - Current language code (e.g., 'en', 'ar')
+ * @returns Language metadata for SEO
+ */
+export const getLanguageMetadata = (language: string) => {
+  return {
+    htmlLang: language,
+    htmlDir: language === 'ar' ? 'rtl' : 'ltr',
+    locale: language === 'ar' ? 'ar_SA' : 'en_US',
   };
 };

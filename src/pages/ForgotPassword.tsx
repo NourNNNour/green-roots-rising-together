@@ -14,7 +14,13 @@ const ForgotPassword = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  
+  // SEO metadata
+  const pageTitle = language === 'ar' ? 'استعادة كلمة المرور | الأخضر' : 'Reset Password | Alakhdar';
+  const pageDescription = language === 'ar'
+    ? 'استعادة كلمة المرور الخاصة بحسابك في الأخضر. أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين.'
+    : 'Reset your Alakhdar account password. Enter your email and we\'ll send you a reset link.';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,16 +38,20 @@ const ForgotPassword = () => {
   };
 
   return (
-    <MainLayout>
+    <MainLayout
+      title={pageTitle}
+      description={pageDescription}
+      noindex={false} // Allow indexing for password recovery page
+    >
       <div className="min-h-[80vh] flex items-center justify-center p-4">
         <div className="w-full max-w-md space-y-8 bg-white p-8 rounded-lg shadow-md">
           <div className="text-center">
             <div className="flex justify-center">
               <Leaf className="h-12 w-12 text-green-500" />
             </div>
-            <h2 className="mt-6 text-3xl font-bold text-gray-900">
+            <h1 className="mt-6 text-3xl font-bold text-gray-900">
               {t('auth.resetPassword')}
-            </h2>
+            </h1>
             <p className="mt-2 text-gray-600">
               {t('auth.resetInstructions')}
             </p>
