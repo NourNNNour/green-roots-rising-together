@@ -22,8 +22,17 @@ const Blog = () => {
     // In a real app, this might trigger an API call
   };
 
+  const pageTitle = language === 'ar' ? 'مدونتنا | الأخضر' : 'Our Blog | Alakhdar';
+  const pageDescription = language === 'ar'
+    ? 'القصص والتحديثات والرؤى من رحلة الحفاظ على البيئة.'
+    : 'Stories, updates, and insights from our environmental conservation journey.';
+
   return (
-    <MainLayout>
+    <MainLayout 
+      title={pageTitle}
+      description={pageDescription}
+      article={true}
+    >
       {/* Hero section */}
       <div className="bg-green-600 text-white py-16">
         <div className="container mx-auto px-4 text-center">

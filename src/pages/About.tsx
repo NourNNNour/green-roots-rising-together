@@ -69,8 +69,16 @@ const About = () => {
   const currentLang = language as 'en' | 'ar';
   const c = content[currentLang];
   
+  const pageTitle = language === 'ar' ? 'عن جرين روتس | الأخضر' : 'About GreenRoots | Alakhdar';
+  const pageDescription = language === 'ar'
+    ? 'تعرف على قصة منظمتنا البيئية، مهمتنا، رؤيتنا، وقيمنا الأساسية.'
+    : 'Learn about our environmental organization story, our mission, vision, and core values.';
+
   return (
-    <MainLayout>
+    <MainLayout 
+      title={pageTitle}
+      description={pageDescription}
+    >
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">

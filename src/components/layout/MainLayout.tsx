@@ -5,12 +5,25 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
+import SEO from '@/components/SEO';
 
 interface MainLayoutProps {
   children: React.ReactNode;
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  noindex?: boolean;
 }
 
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = ({ 
+  children, 
+  title,
+  description,
+  image,
+  article,
+  noindex 
+}: MainLayoutProps) => {
   const { language } = useLanguage();
   const { theme } = useTheme();
   const location = useLocation();
@@ -25,6 +38,13 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   
   return (
     <div className={`${theme === 'dark' ? 'dark' : ''} transition-colors duration-300`}>
+      <SEO
+        title={title}
+        description={description}
+        image={image}
+        article={article}
+        noindex={noindex}
+      />
       <div className={`flex min-h-screen flex-col ${language === 'ar' ? 'font-tajawal' : ''} dark:bg-gray-900 dark:text-white`}>
         <Navbar />
         <main className="flex-grow dark:bg-gray-900 dark:text-white">
