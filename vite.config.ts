@@ -23,9 +23,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Enable SSR features
+  // Disabled SSR features
   build: {
-    ssr: mode === 'production' ? 'src/entry-server.tsx' : false, // Specify the SSR entry point
     target: 'esnext',
     outDir: 'dist',
     minify: mode === 'production',
@@ -34,19 +33,6 @@ export default defineConfig(({ mode }) => ({
     chunkSizeWarningLimit: 1000, // Warn when chunks exceed 1MB
     rollupOptions: {
       output: {
-        // Ensure chunks work well with SSR
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            // Split vendor chunks intelligently
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor-react';
-            }
-            if (id.includes('@radix-ui')) {
-              return 'vendor-radix';
-            }
-            return 'vendor';
-          }
-        },
         // Optimize chunk names for better caching
         entryFileNames: '[name].[hash].js',
         chunkFileNames: '[name].[hash].js',

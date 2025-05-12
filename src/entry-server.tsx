@@ -1,13 +1,10 @@
 
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import App from './App';
-import { StaticRouter } from 'react-router-dom/server';
+// This file is kept as a placeholder but SSR functionality has been removed.
+// It can be safely deleted if not needed for reference.
 
-export function render(url: string) {
-  return renderToString(
-    <StaticRouter location={url}>
-      <App />
-    </StaticRouter>
-  );
+import React from 'react';
+import App from './App';
+
+export function render() {
+  return '<div id="root"></div>';
 }

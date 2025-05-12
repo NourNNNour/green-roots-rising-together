@@ -38,7 +38,7 @@ const MainLayout = ({
     });
   }, [location]);
   
-  // Ensure 'language' data attribute is set for SEO purposes
+  // Set language attributes
   useEffect(() => {
     document.documentElement.setAttribute('lang', language);
     document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');

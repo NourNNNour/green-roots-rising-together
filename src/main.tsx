@@ -1,13 +1,11 @@
 
-import { hydrateRoot, createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
 const container = document.getElementById("root");
 
-// Check if we're hydrating from SSR
-if (container?.hasAttribute('data-ssr')) {
-  hydrateRoot(container, <App />);
-} else {
-  createRoot(container!).render(<App />);
+// Simple client-side rendering without hydration
+if (container) {
+  createRoot(container).render(<App />);
 }
