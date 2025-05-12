@@ -27,7 +27,7 @@ const Hero = () => {
             {t('hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link to="/volunteer">
+            <Link to="/register">
               <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white">{t('hero.volunteer')}</Button>
             </Link>
             <Link to="/donate">

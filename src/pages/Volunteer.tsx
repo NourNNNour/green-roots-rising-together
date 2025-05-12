@@ -1,9 +1,8 @@
-
 import MainLayout from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { UserPlus, Calendar, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const VolunteerOpportunity = ({ 
   title, 
@@ -19,6 +18,13 @@ const VolunteerOpportunity = ({
   spots: number;
 }) => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    // In a real application, we might store the selected opportunity in state/context
+    // before redirecting to registration
+    navigate('/register');
+  };
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500">
@@ -38,7 +44,10 @@ const VolunteerOpportunity = ({
         <span className="text-sm font-medium text-gray-500">
           {spots} {t('volunteer.spotsAvailable')}
         </span>
-        <Button className="bg-green-500 hover:bg-green-600">
+        <Button 
+          className="bg-green-500 hover:bg-green-600"
+          onClick={handleSignUp}
+        >
           {t('volunteer.signUp')}
         </Button>
       </div>
@@ -147,7 +156,7 @@ const Volunteer = () => {
           <p className="mb-6 max-w-2xl mx-auto text-gray-700">
             {t('volunteer.cantFindText')}
           </p>
-          <Link to="/contact">
+          <Link to="/register">
             <Button size="lg" className="bg-green-500 hover:bg-green-600">
               {t('volunteer.contactUs')}
             </Button>

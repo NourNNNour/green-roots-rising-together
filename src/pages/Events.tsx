@@ -14,6 +14,7 @@ import { Calendar, MapPin, Clock, Users, User } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { format } from 'date-fns';
 import { ar } from 'date-fns/locale';
+import { useNavigate } from 'react-router-dom';
 
 interface EventType {
   id: string;
@@ -31,6 +32,13 @@ interface EventType {
 const Events = () => {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
+  const navigate = useNavigate();
+
+  const handleEventRegistration = (eventId: string) => {
+    // In a real application, we would store the selected event ID 
+    // before redirecting to the registration page
+    navigate('/register');
+  };
 
   // Sample events data - in a real app, this would come from an API
   const events: EventType[] = [
@@ -165,7 +173,7 @@ const Events = () => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">
+          <Button className="w-full" onClick={() => handleEventRegistration(event.id)}>
             {t('events.register')}
           </Button>
         </CardFooter>
@@ -238,7 +246,7 @@ const Events = () => {
           <p className="mb-6 max-w-2xl mx-auto text-gray-700">
             {t('events.calendarDescription')}
           </p>
-          <Button size="lg">
+          <Button size="lg" onClick={() => navigate('/register')}>
             {t('events.subscribeCalendar')}
           </Button>
         </div>

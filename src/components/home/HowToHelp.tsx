@@ -30,7 +30,7 @@ const HowToHelp = () => {
               {t('help.volunteer.description')}
             </p>
             <div className="flex justify-center">
-              <Link to="/volunteer">
+              <Link to="/register">
                 <Button className="bg-green-500 hover:bg-green-600">{t('help.volunteer.button')}</Button>
               </Link>
             </div>
