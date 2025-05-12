@@ -7,8 +7,8 @@ const About = () => {
   
   const content = {
     en: {
-      title: "About GreenRoots",
-      intro: "GreenRoots was founded in 2018 by a group of passionate environmentalists who wanted to make a tangible difference in their local community. What started as weekend tree-planting events has grown into a full-fledged environmental organization with multiple ongoing projects and hundreds of dedicated volunteers.",
+      title: "About Alakhdar",
+      intro: "Alakhdar was founded in 2018 by a group of passionate environmentalists who wanted to make a tangible difference in their local community. What started as weekend tree-planting events has grown into a full-fledged environmental organization with multiple ongoing projects and hundreds of dedicated volunteers.",
       missionTitle: "Our Mission",
       mission: "We are committed to fostering environmental stewardship through direct action, education, and community engagement. Our mission is to restore and protect local ecosystems, combat climate change through strategic tree planting, and empower individuals to become environmental advocates in their own communities.",
       visionTitle: "Our Vision",
@@ -33,11 +33,11 @@ const About = () => {
         }
       ],
       teamTitle: "Our Team",
-      team: "GreenRoots is powered by a small but dedicated team of staff and a large community of volunteers. Our diverse team brings together expertise in ecology, community organizing, education, and more."
+      team: "Alakhdar is powered by a small but dedicated team of staff and a large community of volunteers. Our diverse team brings together expertise in ecology, community organizing, education, and more."
     },
     ar: {
-      title: "عن جرين روتس",
-      intro: "تأسست جرين روتس في عام 2018 من قبل مجموعة من المهتمين بالبيئة الذين أرادوا إحداث فرق ملموس في مجتمعهم المحلي. ما بدأ كفعاليات لزراعة الأشجار في عطلة نهاية الأسبوع تطور إلى منظمة بيئية كاملة مع مشاريع مستمرة متعددة ومئات المتطوعين المتفانين.",
+      title: "عن الأخضر",
+      intro: "تأسست الأخضر في عام 2018 من قبل مجموعة من المهتمين بالبيئة الذين أرادوا إحداث فرق ملموس في مجتمعهم المحلي. ما بدأ كفعاليات لزراعة الأشجار في عطلة نهاية الأسبوع تطور إلى منظمة بيئية كاملة مع مشاريع مستمرة متعددة ومئات المتطوعين المتفانين.",
       missionTitle: "مهمتنا",
       mission: "نحن ملتزمون بتعزيز الإشراف البيئي من خلال العمل المباشر والتعليم والمشاركة المجتمعية. مهمتنا هي استعادة وحماية النظم البيئية المحلية، ومكافحة تغير المناخ من خلال زراعة الأشجار الاستراتيجية، وتمكين الأفراد ليصبحوا مدافعين عن البيئة في مجتمعاتهم.",
       visionTitle: "رؤيتنا",
@@ -62,14 +62,14 @@ const About = () => {
         }
       ],
       teamTitle: "فريقنا",
-      team: "تعمل جرين روتس بواسطة فريق صغير ولكنه مخلص من الموظفين ومجتمع كبير من المتطوعين. يجمع فريقنا المتنوع بين الخبرة في علم البيئة وتنظيم المجتمع والتعليم والمزيد."
+      team: "يعمل الأخضر بواسطة فريق صغير ولكنه مخلص من الموظفين ومجتمع كبير من المتطوعين. يجمع فريقنا المتنوع بين الخبرة في علم البيئة وتنظيم المجتمع والتعليم والمزيد."
     }
   };
   
   const currentLang = language as 'en' | 'ar';
   const c = content[currentLang];
   
-  const pageTitle = language === 'ar' ? 'عن جرين روتس | الأخضر' : 'About GreenRoots | Alakhdar';
+  const pageTitle = language === 'ar' ? 'عن الأخضر | الأخضر' : 'About Alakhdar | Alakhdar';
   const pageDescription = language === 'ar'
     ? 'تعرف على قصة منظمتنا البيئية، مهمتنا، رؤيتنا، وقيمنا الأساسية.'
     : 'Learn about our environmental organization story, our mission, vision, and core values.';

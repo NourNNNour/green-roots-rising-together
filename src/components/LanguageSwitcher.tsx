@@ -9,9 +9,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export const LanguageSwitcher = () => {
   const { language, setLanguage, t } = useLanguage();
+  const isMobile = useIsMobile();
 
   // Function to handle language change and force reload styles for proper RTL/LTR
   const handleLanguageChange = useCallback((newLang: 'en' | 'ar') => {
@@ -35,7 +37,7 @@ export const LanguageSwitcher = () => {
           <span>{t('language')}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="z-50">
+      <DropdownMenuContent align={isMobile ? "center" : "end"} className="z-50">
         <DropdownMenuItem 
           onClick={() => handleLanguageChange('ar')}
           className={language === 'ar' ? 'bg-green-50 text-green-600 dark:bg-green-900 dark:text-green-300' : ''}
