@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => ({
   },
   // Enable SSR features
   build: {
-    ssr: mode === 'production', // Enable SSR build in production
+    ssr: mode === 'production' ? 'src/entry-server.tsx' : false, // Specify the SSR entry point
     target: 'esnext',
     outDir: 'dist',
     minify: mode === 'production',

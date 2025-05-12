@@ -9,11 +9,21 @@ interface ThemeContextType {
   toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+// Create the context with default values to avoid the 'undefined' issue
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'light',
+  setTheme: () => {},
+  toggleTheme: () => {},
+});
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   // Get initial theme from localStorage or default to light
   const getInitialTheme = (): Theme => {
+    // In SSR environment, there's no localStorage
+    if (typeof window === 'undefined') {
+      return 'light';
+    }
+
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark' || savedTheme === 'light') {
       return savedTheme;
@@ -31,6 +41,10 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   // Apply theme changes to document
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return; // Skip during SSR
+    }
+
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
