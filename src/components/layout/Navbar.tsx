@@ -64,10 +64,10 @@ const Navbar = () => {
     <nav className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - Always in Arabic */}
           <Link to="/" className="flex items-center space-x-2">
             <Leaf className="h-6 w-6 text-green-500" />
-            <span className="font-montserrat font-bold text-xl text-green-500">Alakhdar</span>
+            <span className="font-montserrat font-bold text-xl text-green-500 font-tajawal">الأخضر</span>
           </Link>
 
           {/* Desktop Navigation */}
