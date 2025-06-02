@@ -53,6 +53,16 @@
 @layer base {
   body {
     @apply bg-background text-foreground transition-colors duration-300;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Apply Tajawal font when Arabic is selected */
+  [dir="rtl"] body {
+    font-family: 'Tajawal', 'Arial', sans-serif !important;
+  }
+  
+  [dir="rtl"] * {
+    font-family: 'Tajawal', 'Arial', sans-serif !important;
   }
 }
 
@@ -89,14 +99,6 @@
 [dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 1;
 }
-
-/* Apply RTL font styles */
-[dir="rtl"] body {
-  font-family: 'Tajawal', sans-serif;
-}
-
-/* Add Tajawal Arabic font */
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
 
 /* Fix dropdown menu alignment in RTL */
 [dir="rtl"] .dropdown-menu {
